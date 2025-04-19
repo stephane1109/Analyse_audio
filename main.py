@@ -52,19 +52,19 @@ def downsample_by_second(data, times, samplerate):
     Regroupe le signal par intervalles fixes de 1 seconde.
 
     Chaque bin correspond exactement aux échantillons d'une seconde (soit samplerate échantillons).
-    Pour chaque intervalle (bin), on calcule :
+    Pour chaque intervalle, on calcule :
       - Le temps moyen (généralement approximativement la moitié de la seconde)
-      - La valeur minimale et la valeur maximale dans cet intervalle (bin).
+      - La valeur minimale et la valeur maximale dans cet intervalle.
 
     Args:
         data (np.array): Tableau du signal audio.
         times (np.array): Vecteur temps du signal.
-        samplerate (int): Nombre d'échantillons par seconde.
+        samplerate (int): Nombre d'observations par seconde.
 
     Returns:
-        times_bins (np.array): Temps moyen par intervalle (bin)
-        min_vals (np.array): Valeurs minimales par intervalle (bin)
-        max_vals (np.array): Valeurs maximales par intervalle (bin)
+        times_bins (np.array): Temps moyen par intervalle
+        min_vals (np.array): Valeurs minimales par intervalle
+        max_vals (np.array): Valeurs maximales par intervalle
         avg_vals (np.array): Valeur moyenne par intervalle, calculée ici comme la moyenne de min et max
     """
     n = len(data)
@@ -95,12 +95,12 @@ st.markdown("""
 Ce script analyse un fichier audio (.wav) en regroupant le signal en intervalles fixes de 1 seconde.
 Chaque intervalle (bin) (correspondant à 1 seconde) contient un ensemble d'échantillons. Pour chaque intervalle, 
 on calcule :
-- Le **temps moyen** de l'intervalle,
+- Le **Le point central de l’intervalle (début + 0,5 s) pour positionner l'intervalle sur l’axe temporel,
 - La **valeur minimale** (creux) et la **valeur maximale** (pic) du signal dans cet intervalle,
 - La **valeur moyenne** de l'intervalle (moyenne de min et max).
 
 Ces statistiques permettent d'obtenir une représentation condensée du signal sur une base temporelle régulière.
-L'analyse statistique (calcul de la moyenne globale et de l'écart‑type) se fait ensuite sur le signal résumé (les valeurs moyennes par intervalle (bin)).
+L'analyse statistique (calcul de la moyenne globale et de l'écart‑type) se fait ensuite sur le signal résumé (les valeurs moyennes par intervalle).
 Nous définissons un intervalle de détection [μ ± k×σ] pour repérer les observations atypiques.
 Enfin, si la transcription est activée, le script associe à chaque intervalle (bin) atypique le segment de texte correspondant sur la fenêtre [t−1, t+1].
 """)
