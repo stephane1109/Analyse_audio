@@ -93,7 +93,7 @@ st.title("Analyse de l'amplitude sonore dans un discours")
 st.markdown("""
 ### Introduction
 Ce script analyse un fichier audio (.wav) en regroupant le signal en intervalles fixes de 1 seconde.
-Chaque intervalle (bin) (correspondant à 1 seconde) contient un ensemble d'échantillons. Pour chaque intervalle, 
+Chaque intervalle (correspondant à 1 seconde) contient un ensemble d'observation. Pour chaque intervalle, 
 on calcule :
 - Le **Le point central de l’intervalle (début + 0,5 s) pour positionner l'intervalle sur l’axe temporel,
 - La **valeur minimale** (creux) et la **valeur maximale** (pic) du signal dans cet intervalle,
@@ -102,7 +102,7 @@ on calcule :
 Ces statistiques permettent d'obtenir une représentation condensée du signal sur une base temporelle régulière.
 L'analyse statistique (calcul de la moyenne globale et de l'écart‑type) se fait ensuite sur le signal résumé (les valeurs moyennes par intervalle).
 Nous définissons un intervalle de détection [μ ± k×σ] pour repérer les observations atypiques.
-Enfin, si la transcription est activée, le script associe à chaque intervalle (bin) atypique le segment de texte correspondant sur la fenêtre [t−1, t+1].
+Enfin, si la transcription est activée, le script associe à chaque observation atypique le segment de texte correspondant sur la fenêtre [t−1, t+1].
 """)
 
 # Téléchargement du fichier audio
