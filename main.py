@@ -1,3 +1,9 @@
+############
+# Analyse de l'amplitude sonore dans un discours
+# Stéphane Meurisse
+# www.codeandcortex.fr
+# Date : 19-04-2024
+############
 import streamlit as st
 import numpy as np
 import soundfile as sf
