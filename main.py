@@ -4,6 +4,7 @@
 # www.codeandcortex.fr
 # Date : 19-04-2024
 ############
+
 import streamlit as st
 import numpy as np
 import soundfile as sf
@@ -87,7 +88,7 @@ def downsample_by_second(data, times, samplerate):
 
 
 # --- Interface Streamlit ---
-st.title("Analyse du signal audio par binning/intervalle (1 seconde par bin)")
+st.title("Analyse de l'amplitude sonore dans un discours")
 
 st.markdown("""
 ### Introduction
@@ -245,10 +246,10 @@ if st.button("Lancer l'analyse"):
     st.markdown("""
     **Interprétation générale :**
     - **Graphique :**  
-      Le signal audio est regroupé par intervalle (bin) d'1 seconde. Chaque intervalle (bin) affiche une enveloppe (la valeur minimale et maximale) et une valeur moyenne (en bleu).  
-      Les intervalles (bin) dont la valeur moyenne sort de l'intervalle de confiance [μ ± k×σ] (défini ici pour le signal résumé par les moyennes des intervalles (bin)) sont marqués en rouge.
+      Le signal audio est regroupé par intervalle d'1 seconde. Chaque intervalle affiche une enveloppe (la valeur minimale et maximale) et une valeur moyenne (en bleu).  
+      Les intervalles dont la valeur moyenne sort de l'intervalle de confiance [μ ± k×σ] (défini ici pour le signal résumé par les moyennes des intervalles) sont marqués en rouge.
     - **Concordancier :**  
-      Le tableau récapitule, pour chaque intervalle (bin) atypique, son timestamp (en secondes et au format mm:ss), la valeur moyenne, et, si la transcription est activée, le segment de texte correspondant à la fenêtre [t-1, t+1].
+      Le tableau récapitule, pour chaque observation atypique, son timestamp (en secondes et au format mm:ss), la valeur moyenne, et, si la transcription est activée, le segment de texte correspondant à la fenêtre [t-1, t+1].
     """)
 else:
     st.info("Veuillez importer un fichier audio (.wav).")
